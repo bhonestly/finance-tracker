@@ -5,22 +5,19 @@ const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
+const mongoose = require('mongoose');
 
-// load env variables
 require("dotenv").config();
-
-// create the express app
-const app = express();
-
-// connect to MongoDB with mongoose
 require("./config/database");
-
-// load passport
 require("./config/passport");
 
-// require routes
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const expensesRouter = require('./routes/expenses');
+const incomesRouter = require('./routes/incomes');
+
+
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -52,6 +49,8 @@ app.use(passport.session());
 // router middleware
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use('/expenses', expensesRouter);
+app.use('/incomes', incomesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

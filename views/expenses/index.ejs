@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expense List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Expense List</h1>
+    <% if (!expenses.length) { %>
+    <p>
+      No Expenses
+    </p>
+    <% } %>
+    <div>
+      <% expenses.forEach(t => { %>
+        <div>
+          <p><%= t.title %></p>
+          <p><%= t.amount %></p>
+          <p><%= t.date %></p>
+          <form action="/expenses/<%= t._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+      <button><a href='/expenses/new'>Add a New Expense</a></button>
+  </body>
+</html>

@@ -1,22 +1,19 @@
-const router = require("express").Router();
-const passport = require("passport");
+const router = require('express').Router()
+const expenseCtrl = require('../controllers/expenses')
 
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
 
-router.get(
-  "/google/oauth2callback",
-  passport.authenticate("google", {
-    successRedirect: "/",
-    failureRedirect: "/auth/google",
-  })
-);
+/* GET users listing. */
+router.get('/', isLoggedIn, expenseCtrl.index)
+router.get('/new', expenseCtrl.new);
+router.get('/:id', expenseCtrl.show); 
+router.post('/', expenseCtrl.create);
+router.post("/expenses/:id", isLoggedIn, expenseCtrl.create)
+router.put('/:id', expenseCtrl.update);
+router.delete('/:id', expenseCtrl.delete);
 
-router.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
-});
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/auth/google");
+}
 
 module.exports = router;

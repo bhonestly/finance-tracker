@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Create a New Expense</title>
+</head>
+<body>Add a New Expense</h1>
+    <form action='/expenses' method='POST'>
+        <label for='title'>Title: <input type='text' name='title' default='New Expense' autofocus required='true'></label><br><br>
+        <label for="amount">Amount: <input type="text" name='amount' default='Amount' autofocus required='true'></label><br><br>
+        <label for="date">Date: <input typeOf='date' name='date' default='Date' autofocus required='true'></label><br><br>
+        <input type='submit'>
+    </form>
+</body>
+</html>

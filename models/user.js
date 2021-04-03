@@ -7,6 +7,7 @@ const userSchema = new Schema(
     email: String,
     avatar: String,
     googleId: String,
+    expenses: [{type: Schema.Types.ObjectId, ref: "Expense"}],
   },
   {
     timestamps: true,

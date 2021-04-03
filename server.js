@@ -5,7 +5,7 @@ const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 require("dotenv").config();
 require("./config/database");
@@ -14,7 +14,6 @@ require("./config/passport");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const expensesRouter = require('./routes/expenses');
-const incomesRouter = require('./routes/incomes');
 
 
 const app = express();
@@ -50,7 +49,6 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use('/expenses', expensesRouter);
-app.use('/incomes', incomesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

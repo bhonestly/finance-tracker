@@ -8,6 +8,8 @@ const userSchema = new Schema(
     avatar: String,
     googleId: String,
     expenses: [{type: Schema.Types.ObjectId, ref: "Expense"}],
+    incomes: [{type: Schema.Types.ObjectId, ref: "Income"}],
+    accountTotal: Number,
   },
   {
     timestamps: true,

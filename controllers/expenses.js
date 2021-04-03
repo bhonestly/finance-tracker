@@ -1,4 +1,5 @@
 const Expense = require('../models/expense')
+const User = require('../models/user')
 module.exports = {
     index,
     new: newExpense,
@@ -6,6 +7,7 @@ module.exports = {
     show,
     update,
     delete: deleteExpense,
+
 }
 
 function deleteExpense(req, res) {
@@ -35,21 +37,44 @@ function show(req, res) {
 //         res.redirect('/expenses')
 //     })
 // }
+// function create (req, res) {
+
+//   console.log(req.params.id)
+//   User.findById(req.params.id, (err, user) => {
+//     user.expenses.push(req.body.expenses)
+//     user.save()
+//     .then(()=> {
+//       res.redirect(`/expenses`)
+//   }).catch(err =>{
+//       console.log(err)
+//   })
+// })
+// }
+
 function create (req, res) {
-  console.log(req.params.id)
-  User.findById(req.params.id, (err, user) => {
-    user.expenses.push(req.body.expenses)
-    user.save()
-    .then(()=> {
-      res.redirect(`/expenses`)
-  }).catch(err =>{
-      console.log(err)
+    console.log(req.user)
+    const expense = new Expense(req.body)
+    expense.save()
+    console.log(req.params.id)
+    User.findById(req.params.id, (err, user, expense) => {
+        console.log(user, expense)
+      user.expenses.push(expense)
+      user.save()
+      .then(()=> {
+        res.redirect(`/expenses`)
+    }).catch(err =>{
+        console.log(err)
+    })
   })
-})
-}
+  }
+  
+
 function newExpense(req, res) {
-  res.render('expenses/new');
+  res.render('expenses/new',{
+    user: req.user}
+    )
 }
+
 function index(req, res) {
   Expense.find({}, function(err, expenses){
   res.render('expenses/index', {

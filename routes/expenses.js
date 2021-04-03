@@ -4,10 +4,10 @@ const expenseCtrl = require('../controllers/expenses')
 
 /* GET users listing. */
 router.get('/', isLoggedIn, expenseCtrl.index)
-router.get('/new', expenseCtrl.new);
+router.get('/new/:id', expenseCtrl.new);
 router.get('/:id', expenseCtrl.show); 
-router.post('/', expenseCtrl.create);
-router.post("/expenses/:id", isLoggedIn, expenseCtrl.create)
+// router.post('/', expenseCtrl.create);
+router.post("/new/:id", isLoggedIn, expenseCtrl.create)
 router.put('/:id', expenseCtrl.update);
 router.delete('/:id', expenseCtrl.delete);
 

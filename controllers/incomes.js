@@ -25,6 +25,7 @@ function update(req, res) {
         res.redirect('/incomes')
     })
 }
+
 function show(req, res) {
     Expense.findById(req.params.id)
     .then( (Income)  => {

@@ -2,7 +2,6 @@ const router = require('express').Router()
 const incomeCtrl = require('../controllers/incomes')
 
 
-/* GET users listing. */
 router.get('/', isLoggedIn, incomeCtrl.index)
 router.get('/new/:id', incomeCtrl.new);
 router.get('/:id', incomeCtrl.show); 

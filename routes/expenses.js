@@ -2,13 +2,12 @@ const router = require('express').Router()
 const expenseCtrl = require('../controllers/expenses')
 
 
-/* GET users listing. */
-router.get('/', isLoggedIn, expenseCtrl.index)
-router.get('/new/:id', expenseCtrl.new);
-router.get('/:id', expenseCtrl.show); 
-router.get('/update/:id', isLoggedIn, expenseCtrl.update)
-router.post("/new/:id", isLoggedIn, expenseCtrl.create)
-router.put('/:id', isLoggedIn, expenseCtrl.edit)
+router.get('/', isLoggedIn, expenseCtrl.index);
+router.get('/new/:id', isLoggedIn, expenseCtrl.new);
+router.get('/:id', isLoggedIn, expenseCtrl.show); 
+router.get('/update/:id', isLoggedIn, expenseCtrl.update);
+router.post("/new/:id", isLoggedIn, expenseCtrl.create);
+router.put('/:id', isLoggedIn, expenseCtrl.edit);
 router.delete('/:id', isLoggedIn, expenseCtrl.delete);
 
 function isLoggedIn(req, res, next) {

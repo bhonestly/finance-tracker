@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expense List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Income List</h1>
+    <% if (!incomes.length) { %>
+    <p>
+      No Incomes
+    </p>
+    <% } %>
+    <div>
+      <% incomes.forEach(t => { %>
+        <div>
+          <p><%= t.source %></p>
+          <p><%= t.amount %></p>
+          <p><%= t.date %></p>
+          <form action="/incomes/<%= t._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+          <button><a href="/incomes/update/<%= t._id %>">Edit</a></button>
+        </div>
+      <% }) %>
+    </div>
+      <button><a href='/incomes/new/<%= user._id %>'>Add a New Income</a></button>
+  </body>
+</html>

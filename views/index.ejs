@@ -2,8 +2,12 @@
 
 
 <main>
-  <h1>hello, <%= user ? user.name : "friend" %></h1>
+  <h1>Greetings, <%= user ? user.name : "human" %></h1>
+  <button> <a href="/expenses">Expenses Page</a></button>
+  <button> <a href="/incomes">Incomes Page</a></button>
 </main>
+
+
 
 
 <%- include('partials/footer') %>

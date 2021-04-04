@@ -1,5 +1,6 @@
 const Expense = require('../models/expense')
 const User = require('../models/user')
+
 module.exports = {
     index,
     new: newExpense,
@@ -7,23 +8,44 @@ module.exports = {
     show,
     update,
     delete: deleteExpense,
+    edit,
+}
 
+function edit(req, res) {
+    console.log(req.params.id)
+    Expense.findByIdAndUpdate(req.params.id, req.body)
+    .then( expense => 
+        res.redirect(`/expenses`)
+    )
+}
+
+function update(req,res) {
+    Expense.findById(req.params.id)
+    .then( expense => {
+        res.render('expenses/update', { 
+        title: 'Update Expense', 
+        expense,
+        user: req.user
+        })
+    })
 }
 
 function deleteExpense(req, res) {
+    console.log("HERE", req.params.id)
     Expense.findByIdAndDelete(req.params.id)
         .then(() => {
-            res.redirect('/expense')
+            res.redirect('/expenses')
         })
 }
 
-function update(req, res) {
-    req.body.done = !!req.body.done
-    Expense.findByIdAndUpdate(req.params.id,req.body)
-    .then(Expense => {
-        res.redirect('/expenses')
-    })
-}
+// function update(req, res) {
+//     req.body.done = !!req.body.done
+//     Expense.findByIdAndUpdate(req.params.id,req.body)
+//     .then(Expense => {
+//         res.redirect('/expenses')
+//     })
+// }
+
 function show(req, res) {
     Expense.findById(req.params.id)
     .then( (Expense)  => {
@@ -66,11 +88,10 @@ function create (req, res) {
         console.log(err)
     })
   })
-  }
-  
+}
 
 function newExpense(req, res) {
-  res.render('expenses/new',{
+    res.render('expenses/new',{
     user: req.user}
     )
 }
@@ -84,3 +105,22 @@ function index(req, res) {
 })
 })
 }
+
+// function index (req, res) {
+//     console.log(req.params.id)
+//     User.findById(req.params.id, (err, user) => {
+//         let expense = user.expenses(req.params.id);
+//         res.render('expenses/index', {
+//             expense,
+//         });
+//     })
+// };
+
+// function index(req, res) {
+//     User.findById((req.params.id), function(err, user){
+//     res.render('expenses/index', {
+//     user,
+//     expenses
+// })
+// })
+// }

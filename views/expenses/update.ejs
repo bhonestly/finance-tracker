@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<h1><%= expense.title %></h1>
+<form action="/expenses/<%= expense._id%>?_method=PUT" method="POST">
+  <label for="title"><input placeholder=<%= expense.title %>  typeof="text" name="title" value=<%= expense.title %> ></label>
+
+  <label for="amount"><input placeholder=<%= expense.amount %>  typeof="text" name="amount" value=<%= expense.amount %> ></label>
+
+  <button typeof="submit">Update</button>
+</form>
+
+<%- include('../partials/footer') %>

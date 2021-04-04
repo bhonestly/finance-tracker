@@ -18,8 +18,9 @@
           <p><%= t.amount %></p>
           <p><%= t.date %></p>
           <form action="/expenses/<%= t._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
+            <button type="submit">Delete</button>
           </form>
+          <button><a href="/expenses/update/<%= t._id %>">Edit</a></button>
         </div>
       <% }) %>
     </div>

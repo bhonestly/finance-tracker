@@ -46,18 +46,12 @@ function show(req, res) {
 }
 
 function create (req, res) {
-    console.log(req.user)
-    const expense = new Expense(req.body)
-    expense.save()
-    console.log(req.params.id)
-    User.findById(req.params.id, (err, user, expense) => {
-        console.log(user, expense)
-        user.expenses.push(expense)
-        user.save()
-        .then(()=> {
-        res.redirect(`/expenses`)
-        }).catch(err =>{
-        console.log(err)
+    Expense.create(req.body)
+    .then(expense => {
+        req.user.expenses.push(expense._id)
+        req.user.save()
+        .then(() => {
+            res.redirect('/expenses')
         })
     })
 }

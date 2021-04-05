@@ -7,8 +7,8 @@
     <title>Add Income Stream</title>
 </head>
 <body>Add Income Stream</h1>
-    <form action='/expenses/new/<%= user._id %>' method='POST'>
-        <label for='source'>Source: <input type='text' name='source' default='New Income' autofocus required='true'></label><br><br>
+    <form action='/incomes/new/<%= user._id %>' method='POST'>
+        <label for='title'>Source: <input type='text' name='title' default='New Income' autofocus required='true'></label><br><br>
         <label for="amount">Amount: <input type="text" name='amount' default='Amount' autofocus
         required='true'></label><br><br>
         <label for="date">Date: <input typeOf='date' name='date' default='Date' autofocus required='true'></label><br><br>

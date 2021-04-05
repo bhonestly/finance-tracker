@@ -14,7 +14,7 @@
     <div>
       <% incomes.forEach(t => { %>
         <div>
-          <p><%= t.source %></p>
+          <p><%= t.title %></p>
           <p><%= t.amount %></p>
           <p><%= t.date %></p>
           <form action="/incomes/<%= t._id %>?_method=DELETE" method="POST">

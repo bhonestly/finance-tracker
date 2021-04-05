@@ -12,7 +12,6 @@ module.exports = {
 }
 
 function edit(req, res) {
-    console.log(req.params.id)
     Expense.findByIdAndUpdate(req.params.id, req.body)
     .then( expense => 
         res.redirect(`/expenses`)
@@ -31,7 +30,6 @@ function update(req,res) {
 }
 
 function deleteExpense(req, res) {
-    console.log("HERE", req.params.id)
     Expense.findByIdAndDelete(req.params.id)
         .then(() => {
             res.redirect('/expenses')
@@ -40,7 +38,7 @@ function deleteExpense(req, res) {
 
 function show(req, res) {
     Expense.findById(req.params.id)
-    .then( (Expense)  => {
+    .then( (expense)  => {
         res.render('expenses/show', {expense})
     })
 }

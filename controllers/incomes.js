@@ -1,4 +1,4 @@
-const Income = require('../models/expense')
+const Income = require('../models/income')
 const User = require('../models/user')
 
 module.exports = {
@@ -12,7 +12,6 @@ module.exports = {
 }
 
 function edit(req, res) {
-    console.log(req.params.id)
     Income.findByIdAndUpdate(req.params.id, req.body)
     .then( income => 
         res.redirect(`/incomes`)
@@ -21,8 +20,8 @@ function edit(req, res) {
 
 function update(req,res) {
     Income.findById(req.params.id)
-    .then( incomes => {
-        res.render('incomess/update', { 
+    .then( income => {
+        res.render('incomes/update', { 
         title: 'Update Income', 
         income,
         user: req.user
@@ -31,7 +30,6 @@ function update(req,res) {
 }
 
 function deleteIncome(req, res) {
-    console.log("HERE", req.params.id)
     Income.findByIdAndDelete(req.params.id)
         .then(() => {
             res.redirect('/incomes')
@@ -67,7 +65,7 @@ function index(req, res) {
     .populate('incomes')
     .then(user => {
         res.render('incomes/index', {
-            title: "Incomess",
+            title: "Incomes",
             user, 
             incomes: user.incomes,
         })  

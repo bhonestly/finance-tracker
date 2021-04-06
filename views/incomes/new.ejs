@@ -9,9 +9,10 @@
 <body>Add Income Stream</h1>
     <form action='/incomes/new/<%= user._id %>' method='POST'>
         <label for='title'>Source: <input type='text' name='title' default='New Income' autofocus required='true'></label><br><br>
-        <label for="amount">Amount: <input type="text" name='amount' default='Amount' autofocus
+        <label for="amount">Amount: <input type="text" name='amount' default='Amount'
         required='true'></label><br><br>
-        <label for="date">Date: <input typeOf='date' name='date' default='Date' autofocus required='true'></label><br><br>
+        <label for="date">Date: <input type='date' name='date' default='Date' autofocus required='true'></label><br><br>
+        <label for="timePeriod">Time Period: <select name="timePeriod"><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label><br><br>
 
         <input type='submit'>
     </form>

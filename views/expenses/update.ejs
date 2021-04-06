@@ -2,11 +2,13 @@
 
 <h1><%= expense.title %></h1>
 <form action="/expenses/<%= expense._id%>?_method=PUT" method="POST">
-  <label for="title"><input placeholder=<%= expense.title %>  typeof="text" name="title" value=<%= expense.title %> ></label>
+  <label for="title">Title: <input placeholder=<%= expense.title %>  type="text" name="title" value=<%= expense.title %> > </label><br><br>
+  <% const expenseDate = expense.date.toISOString().split('T')[0]; %>
+  <label for="amount">Amount: <input placeholder=<%= expense.amount %>  type="text" name="amount" value=<%= expense.amount %> ></label><br><br>
+  <label for="date">Date: <input type='date' name='date' value="<%= expenseDate %>"  required='true'></label><br><br>
+        <label for="timePeriod">Time Period: <select name="timePeriod"><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label><br><br>
 
-  <label for="amount"><input placeholder=<%= expense.amount %>  typeof="text" name="amount" value=<%= expense.amount %> ></label>
-
-  <button typeof="submit">Update</button>
+  <button type="submit">Update</button>
 </form>
 
 <%- include('../partials/footer') %>

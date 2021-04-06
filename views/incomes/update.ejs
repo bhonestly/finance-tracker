@@ -2,11 +2,13 @@
 
 <h1><%= income.title %></h1>
 <form action="/incomes/<%= income._id%>?_method=PUT" method="POST">
-  <label for="title"><input placeholder="<%= income.title %>"  typeof="text" name="title" value="<%= income.title %>" ></label>
+  <label for="title">Title: <input placeholder="<%= income.title %>"  type="text" name="title" value="<%= income.title %>" ></label><br><br>
+<% const incomeDate = income.date.toISOString().split('T')[0]; %> 
+  <label for="amount">Amount: <input placeholder="<%= income.amount %>"  type="text" name="amount" value=<%= income.amount %> ></label><br><br>
+  <label for="date">Date: <input type='date' name='date' value="<%= incomeDate %>" required='true'></label><br><br>
+        <label for="timePeriod">Time Period: <select name="timePeriod"><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option></select></label><br><br>
 
-  <label for="amount"><input placeholder="<%= income.amount %>"  typeof="text" name="amount" value=<%= income.amount %> ></label>
-
-  <button typeof="submit">Update</button>
+  <button type="submit">Update</button>
 </form>
 
 <%- include('../partials/footer') %>

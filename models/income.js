@@ -6,6 +6,7 @@ const incomeSchema = new Schema(
     title: String,
     amount: Number,
     date: Date,
+    timePeriod: {type: String, enum: ['weekly', 'biweekly', 'monthly']},
   },
   {
     timestamps: true,

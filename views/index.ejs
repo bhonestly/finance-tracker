@@ -3,8 +3,10 @@
 
 <main>
   <h1>Greetings, <%= user ? user.name : "human" %></h1>
+  <% if (user) { %>
   <button> <a href="/expenses">Expenses Page</a></button>
   <button> <a href="/incomes">Incomes Page</a></button>
+  <% } %>
 </main>
 
 

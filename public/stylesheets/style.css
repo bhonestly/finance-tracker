@@ -2,27 +2,11 @@ html {
   box-sizing: border-box
 }
 
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
-*::after { /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
-  box-sizing: inherit;
-}
-
-/* resets font size to be 62.5% of the user preference - 
-     in most browser configurations this will be 10px */
-:root {
-    font-size: 62.5%
-}
-
 body {
-  background-color: gray;
-  /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  margin: 0;
+  background-color: rgb(96, 135, 167);
+  font-family: sans-serif;
+  margin: 10px;
+  padding: 10px;
 }
 
 nav {
@@ -30,30 +14,23 @@ nav {
   font-size: 1.6rem;
 }
 
+p {
+  font-weight: bold;
+}
 main {
-  display: flex;
+  display: inline;
   align-items: center;
   justify-content: center;
 }
 
-h1 {
-  font-size: 3.6rem;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: Helvetica;
-  color: #424748;
-}
-
 body {
-  margin: 0;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-    "nav"
-    "main"
+  margin: 10px;
+  padding: 10px;
+  height: 10vh;
+}
+
+h1 {
+  font-size: 20px;
 }
 
 body > nav {
@@ -64,6 +41,31 @@ body > nav {
   align-items: center;
   padding: 0 20px 0 30px;
 }
+
+
+
+/*
+*,
+*::before, 
+*::after {
+  box-sizing: inherit;
+}
+
+:root {
+    font-size: 62.5%
+}
+
+
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #424748;
+}
+
+
 
 nav > img {
   width: 34px;
@@ -179,8 +181,5 @@ div {
   margin: 0 0 1rem;
   padding: 0;
   list-style: none;
-}
+}*/
 
-p {
-  font-weight: bold;
-}

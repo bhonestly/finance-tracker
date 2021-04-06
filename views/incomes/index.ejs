@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Expense List</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%- include('../partials/header') %>
+
+
     <% let monthlyChange = 0 %>
     <% user.incomes.forEach(i => {switch(i.timePeriod) {
       case 'weekly':

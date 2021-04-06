@@ -9,8 +9,6 @@
 <body>
   <form action="/incomes/<% income._id %>?_method=PUT" method="POST">
   <label for="source">Source of Income: <input type="text" name="source" default="new" value="<% income.source%>" required='true'></label><br><br>
-  <label for='done'>Complete: <input type='checkbox' name='done'<%= income.done ? 'checked' : ''%>></label>
-  <input type='submit'>
 </form>
   
 </body>

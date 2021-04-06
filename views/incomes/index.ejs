@@ -5,6 +5,29 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <% let monthlyChange = 0 %>
+    <% user.incomes.forEach(i => {switch(i.timePeriod) {
+      case 'weekly':
+        monthlyChange += 4 * i.amount
+        break;
+      case 'biweekly':
+        monthlyChange += 2 * i.amount
+        break;
+      case 'monthly':
+        monthlyChange += i.amount
+        break;
+    }}) %>  
+      <% user.expenses.forEach(e => {switch(e.timePeriod) {
+      case 'weekly':
+        monthlyChange -= 4 * e.amount
+        break;
+      case 'biweekly':
+        monthlyChange -= 2 * e.amount
+        break;
+      case 'monthly':
+        monthlyChange -= e.amount
+        break;
+    }}) %>
     <h1>Income List</h1>
     <% if (!incomes.length) { %>
     <p>
@@ -12,6 +35,7 @@
     </p>
     <% } %>
     <div>
+      <div><%= monthlyChange %> </div>
       <% incomes.forEach(t => { %>
         <div>
           <p><%= t.title %></p>

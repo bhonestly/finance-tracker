@@ -63,7 +63,20 @@ function newIncome(req, res) {
 function index(req, res) {
     User.findById(req.user._id)
     .populate('incomes')
+    .populate('expenses')
     .then(user => {
+        let monthlyChange = 0
+        user.incomes.forEach(i => {switch(i.timePeriod) {
+            case 'weekly':
+              monthlyChange += 4 * i.amount
+              break;
+            case 'biweekly':
+              monthlyChange += 2 * i.amount
+              break;
+            case 'monthly':
+              monthlyChange += i.amount
+              break;
+          }})
         res.render('incomes/index', {
             title: "Incomes",
             user, 

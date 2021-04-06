@@ -63,6 +63,7 @@ function newExpense(req, res) {
 function index(req, res) {
     User.findById(req.user._id)
     .populate('expenses')
+    .populate('incomes')
     .then(user => {
         res.render('expenses/index', {
             title: "Expenses",

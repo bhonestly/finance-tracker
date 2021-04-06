@@ -9,8 +9,6 @@
   <body>
     <form action='/expenses/<%= expense._id%>?_method=PUT' method='POST'>
       <label for='title'>Item: <input type='text' name='title' default='New'  value='<%= expense.title%>' required='true'></label><br><br>
-      <label for='done'>Complete: <input type='checkbox' name='done'<%= expense.done ? 'checked' : ''%>></label>
-      <input type='submit'>
     </form>
   </body>
 </html>
